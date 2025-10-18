@@ -51,14 +51,16 @@ If you prefer to run it locally:
    cd galton-board-simulation
 
 2. Install dependencies:
+   ```bash  
    pip install -r requirements.txt
 
-3. Launch Jupyter and open the notebook:
+4. Launch Jupyter and open the notebook:
+   ```bash
    jupyter notebook notebooks/galton_experiment.ipynb
 
-Experimental Results
+## Experimental Results
 
-The following table summarizes the Mean Squared Error (MSE) between the experimental probability distribution (from simulation) and the theoretical Binomial and Normal distributions for various n (levels) and N (number of balls):
+The following table summarizes the Mean Squared Error (MSE) between the experimental probability distribution (from simulation) and the theoretical Binomial and Normal distributions for various `n` (levels) and `N` (number of balls):
 
 n	N	MSE_Binomial	MSE_Normal
 5	50	1.08e-03	1.00e-03
@@ -70,52 +72,42 @@ n	N	MSE_Binomial	MSE_Normal
 50	50	4.18e-04	4.19e-04
 50	50000	3.92e-07	4.37e-07
 
-Interpretation:
+**Interpretation**:
+- As N (number of balls) increases, the experimental MSE decreases → the observed frequencies converge toward the theoretical probabilities.
+- As n (levels) increases, the Normal approximation becomes nearly identical to the Binomial model, confirming the Central Limit Theorem.
 
-As N (number of balls) increases, the experimental MSE decreases → the observed frequencies converge toward the theoretical probabilities.
+## Theoretical Background
 
-As n (levels) increases, the Normal approximation becomes nearly identical to the Binomial model, confirming the Central Limit Theorem.
-
-Theoretical Background
-
-For a Galton board with n levels, each ball has a 50% chance of falling left or right at each peg.
-The number of rightward steps X follows:
-
-X∼Binomial(n,0.5)
-
-For large n, by the Central Limit Theorem, this approximates a Normal distribution:
-
-N(μ=n/2,σ^2=n/4)
+For a Galton board with `n` levels, each ball has a 50% chance of falling left or right at each peg. The number of rightward steps `X` follows:
+***X∼Binomial(n,0.5)***
+For large `n`, by the Central Limit Theorem, this approximates a Normal distribution:
+***N(μ=n/2,σ^2=n/4)***
 
 This notebook compares:
+- Empirical results → prob_exp
+- Theoretical Binomial PMF → binom.pmf(x, n, 0.5)
+- Normal approximation (with continuity correction) → norm.cdf(x+0.5) - norm.cdf(x-0.5)
 
-Empirical results → prob_exp
+The **Mean Squared Error (MSE)** quantifies the difference between these distributions.
 
-Theoretical Binomial PMF → binom.pmf(x, n, 0.5)
-
-Normal approximation (with continuity correction) → norm.cdf(x+0.5) - norm.cdf(x-0.5)
-
-The Mean Squared Error (MSE) quantifies the difference between these distributions.
-
-Requirements
+## Requirements
 
 This notebook uses standard scientific Python libraries:
-
+```
 numpy
 matplotlib
 scipy
 pandas
-
-
+```
 In Google Colab, these are preinstalled — you don’t need to install anything manually.
 
-Authors
+## Authors
 
-Aftab Ahmed Choudhry
-Miquel Sala Franci
+- Aftab Ahmed Choudhry
+- Miquel Sala Franci
 
 Date: October 2025
 
-License
+## License
 
 This project is licensed under the MIT License — feel free to reuse or modify the code for educational purposes.
