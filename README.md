@@ -8,20 +8,6 @@ We study how well the empirical data (from simulated falling balls) matches the 
 
 The experiment also verifies that as `n → ∞`, the **Binomial distribution** `Bin(n, 1/2)` approaches the **Normal distribution** `𝒩(n/2, n/4)`.
 
----
-
-## Repository Structure
-
-notebooks/
-│ └── galton_experiment.ipynb # Main Colab notebook with the simulation and analysis
-results/
-│ ├── mse_results.csv # Optional: saved MSE results
-│ └── plots/ # Optional: generated plots (e.g., distribution and error graphs)
-requirements.txt # Python dependencies (optional for Colab)
-README.md # This file
-
----
-
 ## How to Run the Experiment
 
 ### Option 1 — Run Directly in Google Colab (Recommended)
@@ -59,18 +45,6 @@ If you prefer to run it locally:
    jupyter notebook notebooks/galton_experiment.ipynb
 
 ## Experimental Results
-
-The following table summarizes the Mean Squared Error (MSE) between the experimental probability distribution (from simulation) and the theoretical Binomial and Normal distributions for various `n` (levels) and `N` (number of balls):
-
-n	N	MSE_Binomial	MSE_Normal
-5	50	1.08e-03	1.00e-03
-5	50000	1.64e-06	2.15e-05
-10	50	1.01e-03	9.52e-04
-10	50000	5.59e-07	1.58e-06
-30	50	4.24e-04	4.21e-04
-30	50000	8.04e-07	7.43e-07
-50	50	4.18e-04	4.19e-04
-50	50000	3.92e-07	4.37e-07
 
 **Interpretation**:
 - As N (number of balls) increases, the experimental MSE decreases → the observed frequencies converge toward the theoretical probabilities.
